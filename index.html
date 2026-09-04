@@ -1,0 +1,1059 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thank You, Sayang 🤍</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@500;600;700&display=swap');
+
+:root {
+    --pink: #e99ab6;
+    --dark-pink: #c87596;
+    --brown: #795b52;
+    --soft-brown: #a98989;
+    --line: #f2d7df;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100%;
+    padding: 12px;
+    font-family: "Quicksand", sans-serif;
+    color: var(--brown);
+    background:
+        radial-gradient(circle at 8% 10%, #ffe0eb 0 42px, transparent 43px),
+        radial-gradient(circle at 92% 8%, #ffead5 0 58px, transparent 59px),
+        radial-gradient(circle at 90% 90%, #f7dbe7 0 65px, transparent 66px),
+        #fff4f7;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "♡  ♡  ♡  ♡  ♡  ♡  ♡  ♡";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    color: #f3cbd9;
+    font-size: 22px;
+    line-height: 110px;
+    letter-spacing: 14px;
+    opacity: .45;
+    word-wrap: break-word;
+}
+
+/* LOADING SCREEN */
+
+.loading-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: #fff4f7;
+    transition:
+        opacity .6s ease,
+        visibility .6s ease;
+}
+
+.loading-screen.hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.loading-content {
+    width: min(100%, 360px);
+    padding: 28px 22px;
+    border: 1px solid var(--line);
+    border-radius: 30px;
+    background: rgba(255,255,255,.95);
+    box-shadow: 0 18px 45px rgba(196,126,149,.15);
+    text-align: center;
+}
+
+.loading-sticker {
+    display: block;
+    width: min(100%, 220px);
+    height: 190px;
+    margin: 0 auto 18px;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 12px rgba(196,126,149,.12));
+}
+
+.loading-title {
+    margin: 0;
+    color: var(--dark-pink);
+    font-family: "Fredoka", sans-serif;
+    font-size: clamp(26px, 8vw, 36px);
+    line-height: 1.2;
+}
+
+.loading-text {
+    margin: 10px 0 18px;
+    color: var(--soft-brown);
+    font-size: 13px;
+}
+
+.loading-bar {
+    width: 100%;
+    height: 8px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: #f9e0e8;
+}
+
+.loading-progress {
+    width: 0%;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #e99ab6, #d982a3);
+    animation: loadingProgress 2.5s ease forwards;
+}
+
+@keyframes loadingProgress {
+    from {
+        width: 0%;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+/* APP */
+
+.app {
+    width: 100%;
+    max-width: 480px;
+    min-height: calc(100vh - 24px);
+    min-height: calc(100svh - 24px);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* HEADER */
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 4px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+}
+
+.brand-icon {
+    width: 38px;
+    height: 38px;
+    flex: 0 0 38px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 5px 15px rgba(194,121,145,.12);
+    font-size: 21px;
+}
+
+.brand-text {
+    min-width: 0;
+}
+
+.brand-text strong {
+    display: block;
+    color: var(--dark-pink);
+    font-family: "Fredoka", sans-serif;
+    font-size: 16px;
+    white-space: nowrap;
+}
+
+.brand-text small {
+    display: block;
+    margin-top: 1px;
+    color: var(--soft-brown);
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.counter {
+    flex: 0 0 auto;
+    padding: 8px 12px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: rgba(255,255,255,.75);
+    color: var(--dark-pink);
+    font-size: 11px;
+    font-weight: 700;
+}
+
+/* PROGRESS */
+
+.progress-area {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 4px;
+}
+
+.progress-line {
+    flex: 1;
+    height: 7px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: #f8dfe7;
+}
+
+.progress-fill {
+    width: 0%;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #e99ab6, #f4b8ca);
+    transition: width .35s ease;
+}
+
+.progress-label {
+    color: var(--soft-brown);
+    font-size: 10px;
+    font-weight: 700;
+}
+
+/* PAGE */
+
+.main {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.page {
+    display: none;
+    width: 100%;
+    min-width: 0;
+    animation: pageIn .35s ease;
+}
+
+.page.active {
+    display: flex;
+    flex-direction: column;
+}
+
+@keyframes pageIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.page-card {
+    width: 100%;
+    padding: clamp(20px, 5vw, 32px);
+    border: 1px solid var(--line);
+    border-radius: 28px;
+    background: rgba(255,255,255,.94);
+    box-shadow: 0 15px 40px rgba(196,126,149,.12);
+    text-align: center;
+}
+
+.eyebrow {
+    margin: 0 0 8px;
+    color: var(--dark-pink);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+h1,
+h2,
+h3 {
+    margin: 0;
+    font-family: "Fredoka", sans-serif;
+    line-height: 1.2;
+}
+
+h1 {
+    color: var(--dark-pink);
+    font-size: clamp(28px, 8vw, 42px);
+}
+
+h2 {
+    color: var(--dark-pink);
+    font-size: clamp(24px, 7vw, 34px);
+}
+
+h3 {
+    color: var(--brown);
+    font-size: 18px;
+}
+
+.description {
+    max-width: 360px;
+    margin: 14px auto 0;
+    color: var(--soft-brown);
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.content {
+    margin-top: 18px;
+    text-align: left;
+}
+
+.content p {
+    margin: 0 0 14px;
+    color: var(--soft-brown);
+    font-size: 14px;
+    line-height: 1.85;
+}
+
+.content p:last-child {
+    margin-bottom: 0;
+}
+
+.center {
+    text-align: center;
+}
+
+/* STICKER SETIAP PAGE */
+
+.sticker-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto 20px;
+}
+
+.sticker {
+    display: block;
+    width: min(100%, 230px);
+    height: 180px;
+    object-fit: contain;
+    object-position: center;
+    filter: drop-shadow(0 10px 12px rgba(196,126,149,.12));
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.sticker.large {
+    height: 220px;
+}
+
+/* THANKS LIST */
+
+.thanks-list {
+    display: grid;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.thanks-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+    padding: 13px;
+    border: 1px solid #f5dfe5;
+    border-radius: 17px;
+    background: #fff8fa;
+    text-align: left;
+}
+
+.thanks-icon {
+    width: 34px;
+    height: 34px;
+    flex: 0 0 34px;
+    display: grid;
+    place-items: center;
+    border-radius: 12px;
+    background: #ffe6ee;
+    font-size: 17px;
+}
+
+.thanks-item strong {
+    display: block;
+    margin-bottom: 3px;
+    color: var(--brown);
+    font-size: 13px;
+}
+
+.thanks-item span {
+    display: block;
+    color: var(--soft-brown);
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+/* MESSAGE BOX */
+
+.message-box {
+    max-height: min(55vh, 430px);
+    max-height: min(55svh, 430px);
+    overflow-y: auto;
+    margin-top: 18px;
+    padding: 18px;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    background: #fff8fa;
+    text-align: left;
+    scrollbar-width: thin;
+    scrollbar-color: #e9abc0 #fff0f4;
+}
+
+.message-box::-webkit-scrollbar {
+    width: 6px;
+}
+
+.message-box::-webkit-scrollbar-track {
+    background: #fff0f4;
+    border-radius: 10px;
+}
+
+.message-box::-webkit-scrollbar-thumb {
+    background: #e9abc0;
+    border-radius: 10px;
+}
+
+.message-box p {
+    margin-bottom: 13px;
+}
+
+.signature {
+    margin-top: 20px;
+    color: var(--dark-pink);
+    font-family: "Fredoka", sans-serif;
+    font-size: 20px;
+}
+
+.sparkles {
+    margin-top: 20px;
+    color: #e9a1ba;
+    font-size: 18px;
+    letter-spacing: 7px;
+}
+
+/* NAVIGATION */
+
+.navigation {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    margin-top: auto;
+    padding-top: 2px;
+}
+
+.nav-button {
+    min-height: 48px;
+    border: 0;
+    border-radius: 16px;
+    padding: 12px 16px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 700;
+    transition: .2s ease;
+}
+
+.nav-button:active {
+    transform: scale(.96);
+}
+
+.nav-button.back {
+    flex: 1;
+    color: var(--dark-pink);
+    background: white;
+    border: 1px solid var(--line);
+}
+
+.nav-button.next {
+    flex: 1.4;
+    color: white;
+    background: linear-gradient(135deg, #e99ab6, #d982a3);
+    box-shadow: 0 8px 18px rgba(211,126,158,.2);
+}
+
+.nav-button:disabled {
+    opacity: .45;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.footer {
+    padding: 2px 0 3px;
+    text-align: center;
+    color: #c49da9;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 360px) {
+    body {
+        padding: 8px;
+    }
+
+    .app {
+        min-height: calc(100vh - 16px);
+        min-height: calc(100svh - 16px);
+        gap: 9px;
+    }
+
+    .page-card {
+        padding: 19px 15px;
+        border-radius: 23px;
+    }
+
+    .brand-icon {
+        width: 34px;
+        height: 34px;
+        flex-basis: 34px;
+    }
+
+    .brand-text strong {
+        font-size: 14px;
+    }
+
+    .counter {
+        padding: 7px 9px;
+        font-size: 10px;
+    }
+
+    .description,
+    .content p {
+        font-size: 13px;
+    }
+
+    .sticker {
+        width: min(100%, 190px);
+        height: 145px;
+    }
+
+    .sticker.large {
+        height: 175px;
+    }
+
+    .message-box {
+        padding: 14px;
+    }
+
+    .nav-button {
+        min-height: 45px;
+        padding: 10px 11px;
+        font-size: 12px;
+    }
+
+    .loading-content {
+        padding: 24px 16px;
+    }
+
+    .loading-sticker {
+        height: 160px;
+    }
+}
+
+@media (max-height: 650px) {
+    .page-card {
+        padding-top: 17px;
+        padding-bottom: 17px;
+    }
+
+    .sticker-area {
+        margin-bottom: 12px;
+    }
+
+    .sticker {
+        height: 130px;
+    }
+
+    .sticker.large {
+        height: 155px;
+    }
+
+    .content {
+        margin-top: 10px;
+    }
+
+    .loading-sticker {
+        height: 140px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<audio id="bgMusic" autoplay loop preload="auto">
+    <source src="musik.mp3" type="audio/mpeg">
+</audio>
+
+<!-- LOADING SCREEN -->
+<div class="loading-screen" id="loadingScreen">
+    <div class="loading-content">
+
+        <img
+            src="stiker1.webp"
+            alt="Stiker loading"
+            class="loading-sticker"
+        >
+
+        <h1 class="loading-title">
+        
+        </h1>
+
+        <p class="loading-text">
+            Abang lagi menyiapkan sesuatu buat kamu...
+        </p>
+
+        <div class="loading-bar">
+            <div class="loading-progress"></div>
+        </div>
+
+    </div>
+</div>
+
+<div class="app">
+
+    <header class="header">
+        <div class="brand">
+            <div class="brand-icon">🧸</div>
+
+            <div class="brand-text">
+                <strong>For My Favorite Person</strong>
+                <small>little thank you website</small>
+            </div>
+        </div>
+
+        <div class="counter">
+            <span id="pageNumber">1</span>/5
+        </div>
+    </header>
+
+    <div class="progress-area">
+        <div class="progress-line">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+        <div class="progress-label" id="progressLabel">
+            1 dari 5
+        </div>
+    </div>
+
+    <main class="main">
+
+        <!-- PAGE 1 -->
+        <section class="page active" id="page1">
+            <div class="page-card center">
+
+                <div class="sticker-area">
+                    <img
+                        src="stiker2.webp"
+                        alt="Stiker halaman pertama"
+                        class="sticker large"
+                    >
+                </div>
+
+                <p class="eyebrow">A little message for you</p>
+
+                <h1>
+                
+                </h1>
+
+                <p class="description">
+                    Ada sedikit sesuatu yang mau abang sampaikan
+                    buat orang yang selalu punya tempat spesial
+                    di hati abang.
+                </p>
+
+                <div class="sparkles">✦ ♡ ✦</div>
+            </div>
+        </section>
+
+        <!-- PAGE 2 -->
+        <section class="page" id="page2">
+            <div class="page-card">
+
+                <div class="sticker-area">
+                    <img
+                        src="stiker3.webp"
+                        alt="Stiker halaman kedua"
+                        class="sticker"
+                    >
+                </div>
+
+                <p class="eyebrow"></p>
+
+                <h2>
+                    Haii, sayanggg
+                </h2>
+
+                <div class="content">
+                    <p>
+                        Abang cuma mau bilang terima kasih banyak
+                        karena kamu sudah hadir di hidup abang.
+                    </p>
+
+                    <p>
+                        Terima kasih karena sudah mau menemani abang,
+                        mendengarkan cerita abang, dan tetap menjadi
+                        seseorang yang selalu abang tunggu.
+                    </p>
+
+                    <p>
+                        Mungkin abang nggak selalu pandai mengungkapkan
+                        semuanya, tapi abang benar-benar menghargai
+                        keberadaan kamu.
+                    </p>
+                </div>
+
+                <div class="signature center">
+                    Love you always ♡
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 3 -->
+        <section class="page" id="page3">
+            <div class="page-card">
+
+                <div class="sticker-area">
+                    <img
+                        src="stiker4.webp"
+                        alt="Stiker halaman ketiga"
+                        class="sticker"
+                    >
+                </div>
+
+                <p class="eyebrow"></p>
+
+                <h2>
+                    Terima kasih<br>
+                    untuk semuanya
+                </h2>
+
+                <div class="thanks-list">
+
+                    <div class="thanks-item">
+                        <div class="thanks-icon">🤍</div>
+
+                        <div>
+                            <strong>Terima kasih sudah sabar</strong>
+                            <span>
+                                Karena kamu tetap mau memahami abang
+                                meskipun abang kadang banyak kurangnya.
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="thanks-item">
+                        <div class="thanks-icon">🌷</div>
+
+                        <div>
+                            <strong>Terima kasih sudah perhatian</strong>
+                            <span>
+                                Hal-hal kecil dari kamu selalu berhasil
+                                bikin hari abang terasa lebih baik.
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="thanks-item">
+                        <div class="thanks-icon">🫶</div>
+
+                        <div>
+                            <strong>Terima kasih sudah bertahan</strong>
+                            <span>
+                                Terima kasih karena masih memilih untuk
+                                berjalan bersama abang sampai sekarang.
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 4 -->
+        <section class="page" id="page4">
+            <div class="page-card">
+
+                <div class="sticker-area">
+                    <img
+                        src="stiker5.webp"
+                        alt="Stiker halaman keempat"
+                        class="sticker"
+                    >
+                </div>
+
+                <p class="eyebrow"></p>
+
+                <h2>
+                    Kamu itu<br>
+                    berarti banget
+                </h2>
+
+                <div class="content">
+                    <p>
+                        Kadang abang suka bingung bagaimana cara
+                        menjelaskan betapa berartinya kamu buat abang.
+                    </p>
+
+                    <p>
+                        Kamu bukan cuma seseorang yang abang sayang,
+                        tapi kamu juga seseorang yang bisa membuat
+                        abang merasa tenang hanya dengan hadir.
+                    </p>
+
+                    <p>
+                        Bahkan obrolan sederhana, candaan kecil,
+                        dan kabar dari kamu bisa menjadi bagian
+                        terbaik dari hari abang.
+                    </p>
+                </div>
+
+                <div class="sparkles center">♡ ✦ ♡</div>
+            </div>
+        </section>
+
+        <!-- PAGE 5 -->
+        <section class="page" id="page5">
+            <div class="page-card">
+
+                <div class="sticker-area">
+                    <img
+                        src="stiker6.webp"
+                        alt="Stiker halaman kelima"
+                        class="sticker large"
+                    >
+                </div>
+
+                <p class="eyebrow"></p>
+
+                <h2>
+                    Thank You<br>
+                    For Being You 
+                </h2>
+
+                <div class="message-box" id="messageBox">
+                    <p>
+                        Sayanggg, abang mau mengucapkan terima kasih
+                        untuk semua hal yang sudah kamu lakukan.
+                        Terima kasih karena sudah hadir dan membuat
+                        hidup abang menjadi lebih berwarna.
+                    </p>
+
+                    <p>
+                        Terima kasih karena sudah menjadi tempat abang
+                        bercerita, tempat abang mencari tenang,
+                        dan seseorang yang selalu ingin abang temui.
+                    </p>
+
+                    <p>
+                        Abang tahu hubungan kita nggak selalu sempurna.
+                        Ada kalanya kita salah paham, ada kalanya
+                        kita sama-sama capek, dan ada kalanya
+                        kita nggak bisa mengerti satu sama lain.
+                    </p>
+
+                    <p>
+                        Tapi di balik semua itu, abang tetap bersyukur
+                        karena kita masih mau belajar, masih mau
+                        memperbaiki keadaan, dan masih mau saling
+                        menggenggam.
+                    </p>
+
+                    <p>
+                        Abang nggak berjanji akan selalu sempurna,
+                        tapi abang akan terus berusaha menjadi
+                        seseorang yang lebih baik buat kamu.
+                    </p>
+
+                    <p>
+                        Terima kasih sudah menjadi bagian dari cerita
+                        abang. Semoga kita bisa terus membuat
+                        banyak kenangan indah bersama.
+                    </p>
+
+                    <p>
+                        Abang sayang banget sama kamu.
+                        Jangan pernah meragukan itu, yaa.
+                    </p>
+                </div>
+
+                <div class="signature center">
+                    From abang, with love ♡
+                </div>
+
+                <div class="sparkles center">
+                    ♡ ✦ ♡
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <div class="navigation">
+        <button
+            class="nav-button back"
+            id="backButton"
+            type="button"
+        >
+            ← Kembali
+        </button>
+
+        <button
+            class="nav-button next"
+            id="nextButton"
+            type="button"
+        >
+            Mulai →
+        </button>
+    </div>
+
+    <footer class="footer">
+        made with love for you ♡
+    </footer>
+
+</div>
+
+<script>
+const loadingScreen = document.getElementById("loadingScreen");
+
+const pages = Array.from(document.querySelectorAll(".page"));
+const nextButton = document.getElementById("nextButton");
+const backButton = document.getElementById("backButton");
+const progressFill = document.getElementById("progressFill");
+const pageNumber = document.getElementById("pageNumber");
+const progressLabel = document.getElementById("progressLabel");
+const messageBox = document.getElementById("messageBox");
+
+let currentPage = 0;
+
+/* LOADING */
+window.addEventListener("load", function() {
+    setTimeout(function() {
+        loadingScreen.classList.add("hide");
+    }, 2700);
+});
+
+/* PAGE NAVIGATION */
+function updatePage() {
+    pages.forEach(function(page, index) {
+        page.classList.toggle("active", index === currentPage);
+    });
+
+    const totalPages = pages.length;
+    const currentNumber = currentPage + 1;
+    const progress = (currentNumber / totalPages) * 100;
+
+    pageNumber.textContent = currentNumber;
+    progressLabel.textContent = `${currentNumber} dari ${totalPages}`;
+    progressFill.style.width = `${progress}%`;
+
+    backButton.disabled = currentPage === 0;
+
+    if (currentPage === totalPages - 1) {
+        nextButton.textContent = "Ulangi ♡";
+    } else if (currentPage === 0) {
+        nextButton.textContent = "Mulai →";
+    } else {
+        nextButton.textContent = "Lanjut →";
+    }
+
+    if (messageBox) {
+        messageBox.scrollTop = 0;
+    }
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+nextButton.addEventListener("click", function() {
+    if (currentPage < pages.length - 1) {
+        currentPage++;
+    } else {
+        currentPage = 0;
+    }
+
+    updatePage();
+});
+
+backButton.addEventListener("click", function() {
+    if (currentPage > 0) {
+        currentPage--;
+        updatePage();
+    }
+});
+
+document.addEventListener("keydown", function(event) {
+    if (event.key === "ArrowRight") {
+        nextButton.click();
+    }
+
+    if (event.key === "ArrowLeft" && currentPage > 0) {
+        backButton.click();
+    }
+});
+
+updatePage();
+
+
+const bgMusic = document.getElementById("bgMusic");
+
+if (bgMusic) {
+    bgMusic.volume = 0.45;
+
+    function playMusic() {
+        bgMusic.play().catch(function(error) {
+            console.log("Autoplay diblokir browser:", error);
+        });
+    }
+
+    // Coba autoplay saat website dibuka
+    playMusic();
+
+    // Coba lagi setelah seluruh halaman selesai dimuat
+    window.addEventListener("load", playMusic);
+
+    // Jika autoplay HP diblokir, musik akan menyala
+    // saat pengguna pertama kali menyentuh atau mengklik halaman
+    document.addEventListener("click", playMusic, { once: true });
+    document.addEventListener("touchstart", playMusic, {
+        once: true,
+        passive: true
+    });
+}
+
+</script>
+
+</body>
+</html>
